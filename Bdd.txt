@@ -1,0 +1,189 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: Vendeur
+#------------------------------------------------------------
+
+CREATE TABLE Vendeur(
+        Id_vendeur    Int  Auto_increment  NOT NULL ,
+        Pseudo        Varchar (20) NOT NULL ,
+        Email         Varchar (50) NOT NULL ,
+        Nom           Varchar (20) NOT NULL ,
+        Argent        Int NOT NULL ,
+        Url_photo_p   Varchar (100) NOT NULL ,
+        Url_imag_pref Varchar (100) NOT NULL
+	,CONSTRAINT Vendeur_PK PRIMARY KEY (Id_vendeur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Catégorie
+#------------------------------------------------------------
+
+CREATE TABLE Categorie(
+        Id_categorie Int  Auto_increment  NOT NULL ,
+        nom_cat      Varchar (20) NOT NULL
+	,CONSTRAINT Categorie_PK PRIMARY KEY (Id_categorie)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Acheteur
+#------------------------------------------------------------
+
+CREATE TABLE Acheteur(
+        Id_acheteur Int  Auto_increment  NOT NULL ,
+        Nom         Varchar (20) NOT NULL ,
+        Prenom      Varchar (20) NOT NULL ,
+        Email       Varchar (50) NOT NULL ,
+        Adresse     Varchar (50) NOT NULL ,
+        Id_carte    Int NOT NULL
+	,CONSTRAINT Acheteur_PK PRIMARY KEY (Id_acheteur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: carte bleu
+#------------------------------------------------------------
+
+CREATE TABLE carte_bleu(
+        Id_carte         Int  Auto_increment  NOT NULL ,
+        Nom_proprietaire Varchar (50) NOT NULL ,
+        Numero_carte     Int NOT NULL ,
+        Code_securite    Int NOT NULL ,
+        Date_expiration  Date NOT NULL ,
+        Sold             Int NOT NULL ,
+        Seuil            Int NOT NULL ,
+        Id_acheteur      Int NOT NULL
+	,CONSTRAINT carte_bleu_PK PRIMARY KEY (Id_carte)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Item
+#------------------------------------------------------------
+
+CREATE TABLE Item(
+        Id_item      Int  Auto_increment  NOT NULL ,
+        Nom          Varchar (50) NOT NULL ,
+        Prix         Float NOT NULL ,
+        Description  Mediumtext NOT NULL ,
+        Video        Varchar (100) NOT NULL ,
+        type_vente1  Varchar (20) NOT NULL ,
+        type_vente2  Varchar (20) NOT NULL ,
+        Id_acheteur  Int ,
+        Id_vendeur   Int NOT NULL ,
+        Id_categorie Int NOT NULL
+	,CONSTRAINT Item_PK PRIMARY KEY (Id_item)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Photo
+#------------------------------------------------------------
+
+CREATE TABLE Photo(
+        Id_photo Int  Auto_increment  NOT NULL ,
+        photo1   Varchar (100) NOT NULL ,
+        Id_item  Int NOT NULL
+	,CONSTRAINT Photo_PK PRIMARY KEY (Id_photo)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Panier
+#------------------------------------------------------------
+
+CREATE TABLE Panier(
+        Id_panier   Int  Auto_increment  NOT NULL ,
+        Prix_total  Float NOT NULL ,
+        Id_acheteur Int NOT NULL
+	,CONSTRAINT Panier_PK PRIMARY KEY (Id_panier)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: negocie
+#------------------------------------------------------------
+
+CREATE TABLE negocie(
+        Id_acheteur Int NOT NULL ,
+        Id_item     Int NOT NULL ,
+        Id_vendeur  Int NOT NULL ,
+        offre_prix  Float NOT NULL
+	,CONSTRAINT negocie_PK PRIMARY KEY (Id_acheteur,Id_item,Id_vendeur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Enchère
+#------------------------------------------------------------
+
+CREATE TABLE Enchere(
+        Id_item     Int NOT NULL ,
+        Id_acheteur Int NOT NULL ,
+        Prix        Float NOT NULL ,
+        date_debut  Date NOT NULL ,
+        date_fin    Date NOT NULL
+	,CONSTRAINT Enchere_PK PRIMARY KEY (Id_item,Id_acheteur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Contient
+#------------------------------------------------------------
+
+CREATE TABLE Contient(
+        Id_panier Int NOT NULL ,
+        Id_item   Int NOT NULL
+	,CONSTRAINT Contient_PK PRIMARY KEY (Id_panier,Id_item)
+)ENGINE=InnoDB;
+
+
+
+
+ALTER TABLE Acheteur
+	ADD CONSTRAINT Acheteur_carte_bleu0_FK
+	FOREIGN KEY (Id_carte)
+	REFERENCES carte_bleu(Id_carte);
+
+ALTER TABLE Acheteur 
+	ADD CONSTRAINT Acheteur_carte_bleu0_AK 
+	UNIQUE (Id_carte);
+
+ALTER TABLE carte_bleu
+	ADD CONSTRAINT carte_bleu_Acheteur0_FK
+	FOREIGN KEY (Id_acheteur)
+	REFERENCES Acheteur(Id_acheteur);
+
+ALTER TABLE carte_bleu 
+	ADD CONSTRAINT carte_bleu_Acheteur0_AK 
+	UNIQUE (Id_acheteur);
+
+ALTER TABLE Item
+	ADD CONSTRAINT Item_Acheteur0_FK
+	FOREIGN KEY (Id_acheteur)
+	REFERENCES Acheteur(Id_acheteur);
+
+ALTER TABLE Item
+	ADD CONSTRAINT Item_Vendeur1_FK
+	FOREIGN KEY (Id_vendeur)
+	REFERENCES Vendeur(Id_vendeur);
+
+ALTER TABLE Item
+	ADD CONSTRAINT Item_Categorie2_FK
+	FOREIGN KEY (Id_categorie)
+	REFERENCES Categorie(Id_categorie);
+
+ALTER TABLE Photo
+	ADD CONSTRAINT Photo_Item0_FK
+	FOREIGN KEY (Id_item)
+	REFERENCES Item(Id_item);
+
+ALTER TABLE Panier
+	ADD CONSTRAINT Panier_Acheteur0_FK
+	FOREIGN KEY (Id_acheteur)
+	REFERENCES Acheteur(Id_acheteur);
