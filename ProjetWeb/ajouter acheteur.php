@@ -15,54 +15,59 @@ $Adresse = isset($_POST["Adresse"])? $_POST["Adresse"] : "";
  if ($_POST["button2"]) 
  {   
   if ($db_found) 
- {    $sql = "SELECT * FROM acheteur";   
-  if ($Nom != "") {     
+    {    
+      $sql = "SELECT * FROM acheteur";   
+        if ($Nom != "") 
+        {     
   //on cherche si l'acheteur existe deja
-  $sql .= " WHERE Nom LIKE '%$Nom%'";     
-  if ($Prenom != "") 
-  {      
-  $sql .= " AND Prenom LIKE '%$Prenom%'";     
-  }    }    
-  $result = mysqli_query($db_handle, $sql);    
-  //regarder s'il y a de résultat    
-  if (mysqli_num_rows($result) != 0) 
-  {    
-  //l'acheteur existe deja
-   echo "Acheteur existe deja";    
-} 
-else { 
-$sql = "INSERT INTO acheteur(Prenom, Nom, Email, Adresse)            
- VALUES('$Nom', '$Prenom', '$Email', '$Adresse')";     
- $result = mysqli_query($db_handle, $sql);     
- echo "ajout réussi." . "<br>";                                   
- //on affiche l'acheteur ajouté     
- $sql = "SELECT * FROM acheteur";     
- if ($titre != "") {     
- //on cherche le livre avec les paramètres titre et auteur     
- 	$sql .= " WHERE Nom LIKE '%$Nom%'";      
- 	if ($Prenom != "") {       
- 		$sql .= " AND Prenom LIKE '%$Prenom%'";      
- 	}     
- }     
+          $sql .= " WHERE Nom LIKE '%$Nom%'";     
+          if ($Prenom != "") 
+         {      
+           $sql .= " AND Prenom LIKE '%$Prenom%'";     
+         }    
+       }    
+      $result = mysqli_query($db_handle, $sql);    
+       //regarder s'il y a de résultat    
+       if (mysqli_num_rows($result) != 0) 
+        {    
+          //l'acheteur existe deja
+          echo "Acheteur existe deja";    
+        } 
+        else 
+        { 
+          $sql = "INSERT INTO acheteur(Prenom, Nom, Email, Adresse)VALUES('$Nom', '$Prenom', '$Email', '$Adresse')";     
+          $result = mysqli_query($db_handle, $sql);     
+          echo "ajout réussi." . "<br>";                                   
+          //on affiche l'acheteur ajouté     
+          $sql = "SELECT * FROM acheteur";     
+          if ($Nom != "") 
+          {     
+          //on cherche l'achteur ajouté    
+ 	          $sql .= " WHERE Nom LIKE '%$Nom%'";      
+ 	          if ($Prenom != "")
+            {       
+ 		         $sql .= " AND Prenom LIKE '%$Prenom%'";      
+ 	          }     
+        }     
  $result = mysqli_query($db_handle, $sql); 
  
-    while ($data = mysqli_fetch_assoc($result)) 
-    	{      echo "Informations sur l'acheteur ajouté:" . "<br>";      
+  while ($data = mysqli_fetch_assoc($result)) 
+  {      
+
+    echo "Informations sur l'acheteur ajouté:" . "<br>";      
     echo "ID: " . $data['ID'] . "<br>";      
     echo "Nom: " . $data['Nom'] . "<br>";      
     echo "Prenom: " . $data['Prenom'] . "<br>";      
     echo "Email: " . $data['Email'] . "<br>";      
-    echo "Adresse: " . $data['Adresse'] . "<br>";      
-    echo "<br>";     
-}    
+    echo "Adresse: " . $data['Adresse'] . "<br>";          
+  }    
 } 
- 
-  } 
+} 
   else 
   	{    
   		echo "Database not found";   
   	}  
-  }    
-  //fermer la connexion  
-  mysqli_close($db_handle);
+}    
+//fermer la connexion  
+mysqli_close($db_handle);
   ?> 
