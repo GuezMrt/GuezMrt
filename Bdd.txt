@@ -4,6 +4,54 @@
 
 
 #------------------------------------------------------------
+# Table: Acheteur
+#------------------------------------------------------------
+
+CREATE TABLE Acheteur(
+        Id_acheteur Int  Auto_increment  NOT NULL ,
+        Nom         Varchar (20) NOT NULL ,
+        Prenom      Varchar (20) NOT NULL ,
+        Email       Varchar (50) NOT NULL ,
+        Adresse     Varchar (50) NOT NULL
+	,CONSTRAINT Acheteur_PK PRIMARY KEY (Id_acheteur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: carte bleu
+#------------------------------------------------------------
+
+CREATE TABLE carte_bleu(
+        Numero_carte     Int NOT NULL ,
+        Nom_proprietaire Varchar (50) NOT NULL ,
+        Code_securite    Int NOT NULL ,
+        Date_expiration  Date NOT NULL ,
+        Sold             Int NOT NULL ,
+        Seuil            Int NOT NULL ,
+        Id_acheteur      Int NOT NULL
+	,CONSTRAINT carte_bleu_PK PRIMARY KEY (Numero_carte)
+
+	,CONSTRAINT carte_bleu_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
+	,CONSTRAINT carte_bleu_Acheteur_AK UNIQUE (Id_acheteur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Panier
+#------------------------------------------------------------
+
+CREATE TABLE Panier(
+        Id_panier   Int  Auto_increment  NOT NULL ,
+        Prix_total  Float NOT NULL ,
+        Id_acheteur Int NOT NULL
+	,CONSTRAINT Panier_PK PRIMARY KEY (Id_panier)
+
+	,CONSTRAINT Panier_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
+	,CONSTRAINT Panier_Acheteur_AK UNIQUE (Id_acheteur)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: Vendeur
 #------------------------------------------------------------
 
@@ -24,41 +72,8 @@ CREATE TABLE Vendeur(
 #------------------------------------------------------------
 
 CREATE TABLE Categorie(
-        Id_categorie Int  Auto_increment  NOT NULL ,
-        nom_cat      Varchar (20) NOT NULL
-	,CONSTRAINT Categorie_PK PRIMARY KEY (Id_categorie)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Acheteur
-#------------------------------------------------------------
-
-CREATE TABLE Acheteur(
-        Id_acheteur Int  Auto_increment  NOT NULL ,
-        Nom         Varchar (20) NOT NULL ,
-        Prenom      Varchar (20) NOT NULL ,
-        Email       Varchar (50) NOT NULL ,
-        Adresse     Varchar (50) NOT NULL ,
-        Id_carte    Int NOT NULL
-	,CONSTRAINT Acheteur_PK PRIMARY KEY (Id_acheteur)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: carte bleu
-#------------------------------------------------------------
-
-CREATE TABLE carte_bleu(
-        Id_carte         Int  Auto_increment  NOT NULL ,
-        Nom_proprietaire Varchar (50) NOT NULL ,
-        Numero_carte     Int NOT NULL ,
-        Code_securite    Int NOT NULL ,
-        Date_expiration  Date NOT NULL ,
-        Sold             Int NOT NULL ,
-        Seuil            Int NOT NULL ,
-        Id_acheteur      Int NOT NULL
-	,CONSTRAINT carte_bleu_PK PRIMARY KEY (Id_carte)
+        nom_cat Varchar (20) NOT NULL
+	,CONSTRAINT Categorie_PK PRIMARY KEY (nom_cat)
 )ENGINE=InnoDB;
 
 
@@ -67,17 +82,21 @@ CREATE TABLE carte_bleu(
 #------------------------------------------------------------
 
 CREATE TABLE Item(
-        Id_item      Int  Auto_increment  NOT NULL ,
-        Nom          Varchar (50) NOT NULL ,
-        Prix         Float NOT NULL ,
-        Description  Mediumtext NOT NULL ,
-        Video        Varchar (100) NOT NULL ,
-        type_vente1  Varchar (20) NOT NULL ,
-        type_vente2  Varchar (20) NOT NULL ,
-        Id_acheteur  Int ,
-        Id_vendeur   Int NOT NULL ,
-        Id_categorie Int NOT NULL
+        Id_item     Int NOT NULL ,
+        Nom         Varchar (50) NOT NULL ,
+        Prix        Float NOT NULL ,
+        Description Mediumtext NOT NULL ,
+        Video       Varchar (100) NOT NULL ,
+        type_vente1 Varchar (20) NOT NULL ,
+        type_vente2 Varchar (20) NOT NULL ,
+        Id_acheteur Int ,
+        Id_vendeur  Int NOT NULL ,
+        nom_cat     Varchar (20) NOT NULL
 	,CONSTRAINT Item_PK PRIMARY KEY (Id_item)
+
+	,CONSTRAINT Item_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
+	,CONSTRAINT Item_Vendeur0_FK FOREIGN KEY (Id_vendeur) REFERENCES Vendeur(Id_vendeur)
+	,CONSTRAINT Item_Categorie1_FK FOREIGN KEY (nom_cat) REFERENCES Categorie(nom_cat)
 )ENGINE=InnoDB;
 
 
@@ -86,22 +105,11 @@ CREATE TABLE Item(
 #------------------------------------------------------------
 
 CREATE TABLE Photo(
-        Id_photo Int  Auto_increment  NOT NULL ,
-        photo1   Varchar (100) NOT NULL ,
-        Id_item  Int NOT NULL
-	,CONSTRAINT Photo_PK PRIMARY KEY (Id_photo)
-)ENGINE=InnoDB;
+        photo   Varchar (100) NOT NULL ,
+        Id_item Int NOT NULL
+	,CONSTRAINT Photo_PK PRIMARY KEY (photo)
 
-
-#------------------------------------------------------------
-# Table: Panier
-#------------------------------------------------------------
-
-CREATE TABLE Panier(
-        Id_panier   Int  Auto_increment  NOT NULL ,
-        Prix_total  Float NOT NULL ,
-        Id_acheteur Int NOT NULL
-	,CONSTRAINT Panier_PK PRIMARY KEY (Id_panier)
+	,CONSTRAINT Photo_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
 )ENGINE=InnoDB;
 
 
@@ -115,6 +123,10 @@ CREATE TABLE negocie(
         Id_vendeur  Int NOT NULL ,
         offre_prix  Float NOT NULL
 	,CONSTRAINT negocie_PK PRIMARY KEY (Id_acheteur,Id_item,Id_vendeur)
+
+	,CONSTRAINT negocie_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
+	,CONSTRAINT negocie_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+	,CONSTRAINT negocie_Vendeur1_FK FOREIGN KEY (Id_vendeur) REFERENCES Vendeur(Id_vendeur)
 )ENGINE=InnoDB;
 
 
@@ -129,6 +141,9 @@ CREATE TABLE Enchere(
         date_debut  Date NOT NULL ,
         date_fin    Date NOT NULL
 	,CONSTRAINT Enchere_PK PRIMARY KEY (Id_item,Id_acheteur)
+
+	,CONSTRAINT Enchere_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+	,CONSTRAINT Enchere_Acheteur0_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
 )ENGINE=InnoDB;
 
 
@@ -140,50 +155,7 @@ CREATE TABLE Contient(
         Id_panier Int NOT NULL ,
         Id_item   Int NOT NULL
 	,CONSTRAINT Contient_PK PRIMARY KEY (Id_panier,Id_item)
+
+	,CONSTRAINT Contient_Panier_FK FOREIGN KEY (Id_panier) REFERENCES Panier(Id_panier)
+	,CONSTRAINT Contient_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
 )ENGINE=InnoDB;
-
-
-
-
-ALTER TABLE Acheteur
-	ADD CONSTRAINT Acheteur_carte_bleu0_FK
-	FOREIGN KEY (Id_carte)
-	REFERENCES carte_bleu(Id_carte);
-
-ALTER TABLE Acheteur 
-	ADD CONSTRAINT Acheteur_carte_bleu0_AK 
-	UNIQUE (Id_carte);
-
-ALTER TABLE carte_bleu
-	ADD CONSTRAINT carte_bleu_Acheteur0_FK
-	FOREIGN KEY (Id_acheteur)
-	REFERENCES Acheteur(Id_acheteur);
-
-ALTER TABLE carte_bleu 
-	ADD CONSTRAINT carte_bleu_Acheteur0_AK 
-	UNIQUE (Id_acheteur);
-
-ALTER TABLE Item
-	ADD CONSTRAINT Item_Acheteur0_FK
-	FOREIGN KEY (Id_acheteur)
-	REFERENCES Acheteur(Id_acheteur);
-
-ALTER TABLE Item
-	ADD CONSTRAINT Item_Vendeur1_FK
-	FOREIGN KEY (Id_vendeur)
-	REFERENCES Vendeur(Id_vendeur);
-
-ALTER TABLE Item
-	ADD CONSTRAINT Item_Categorie2_FK
-	FOREIGN KEY (Id_categorie)
-	REFERENCES Categorie(Id_categorie);
-
-ALTER TABLE Photo
-	ADD CONSTRAINT Photo_Item0_FK
-	FOREIGN KEY (Id_item)
-	REFERENCES Item(Id_item);
-
-ALTER TABLE Panier
-	ADD CONSTRAINT Panier_Acheteur0_FK
-	FOREIGN KEY (Id_acheteur)
-	REFERENCES Acheteur(Id_acheteur);
