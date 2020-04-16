@@ -26,7 +26,7 @@ CREATE TABLE carte_bleu(
         Code_securite       Int NOT NULL ,
         Nom_proprietaire    Varchar (50) NOT NULL ,
         Prenom_proprietaire Varchar (50) NOT NULL ,
-        Date_expiration     Date NOT NULL ,
+        Date_expiration     Varchar (50) NOT NULL ,
         Type                Varchar (10) NOT NULL ,
         Sold                Int NOT NULL ,
         Seuil               Int NOT NULL ,
