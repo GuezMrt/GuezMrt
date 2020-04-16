@@ -58,13 +58,13 @@ CREATE TABLE Panier(
 #------------------------------------------------------------
 
 CREATE TABLE Vendeur(
-        Id_vendeur    Int  Auto_increment  NOT NULL ,
-        Pseudo        Varchar (20) NOT NULL ,
-        Email         Varchar (50) NOT NULL ,
-        Nom           Varchar (20) NOT NULL ,
-        Argent        Int NOT NULL ,
-        Url_photo_p   Varchar (100) NOT NULL ,
-        Url_imag_pref Varchar (100) NOT NULL
+        Id_vendeur Int  Auto_increment  NOT NULL ,
+        Pseudo     Varchar (20) NOT NULL ,
+        Email      Varchar (50) NOT NULL ,
+        Nom        Varchar (20) NOT NULL ,
+        Argent     Int NOT NULL ,
+        Photo_p    Varchar (100) NOT NULL ,
+        Image_pref Varchar (100) NOT NULL
 	,CONSTRAINT Vendeur_PK PRIMARY KEY (Id_vendeur)
 )ENGINE=InnoDB;
 
@@ -159,8 +159,8 @@ CREATE TABLE Enchere(
         Id_item     Int NOT NULL ,
         Id_acheteur Int NOT NULL ,
         Prix        Float NOT NULL ,
-        date_debut  Date NOT NULL ,
-        date_fin    Date NOT NULL
+        date_debut  Datetime NOT NULL ,
+        date_fin    Datetime NOT NULL
 	,CONSTRAINT Enchere_PK PRIMARY KEY (Id_item,Id_acheteur)
 
 	,CONSTRAINT Enchere_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
@@ -180,3 +180,4 @@ CREATE TABLE Contient(
 	,CONSTRAINT Contient_Panier_FK FOREIGN KEY (Id_panier) REFERENCES Panier(Id_panier)
 	,CONSTRAINT Contient_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
 )ENGINE=InnoDB;
+
