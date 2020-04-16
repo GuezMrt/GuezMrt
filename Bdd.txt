@@ -22,13 +22,15 @@ CREATE TABLE Acheteur(
 #------------------------------------------------------------
 
 CREATE TABLE carte_bleu(
-        Numero_carte     Int NOT NULL ,
-        Nom_proprietaire Varchar (50) NOT NULL ,
-        Code_securite    Int NOT NULL ,
-        Date_expiration  Date NOT NULL ,
-        Sold             Int NOT NULL ,
-        Seuil            Int NOT NULL ,
-        Id_acheteur      Int NOT NULL
+        Numero_carte        Int NOT NULL ,
+        Code_securite       Int NOT NULL ,
+        Nom_proprietaire    Varchar (50) NOT NULL ,
+        Prenom_proprietaire Varchar (50) NOT NULL ,
+        Date_expiration     Date NOT NULL ,
+        Type                Varchar (10) NOT NULL ,
+        Sold                Int NOT NULL ,
+        Seuil               Int NOT NULL ,
+        Id_acheteur         Int NOT NULL
 	,CONSTRAINT carte_bleu_PK PRIMARY KEY (Numero_carte)
 
 	,CONSTRAINT carte_bleu_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
@@ -110,6 +112,25 @@ CREATE TABLE Photo(
 	,CONSTRAINT Photo_PK PRIMARY KEY (photo)
 
 	,CONSTRAINT Photo_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Livraison
+#------------------------------------------------------------
+
+CREATE TABLE Livraison(
+        Numero_de_telephone Int NOT NULL ,
+        Adresse1            Varchar (50) NOT NULL ,
+        Adresse2            Varchar (50) NOT NULL ,
+        Ville               Varchar (50) NOT NULL ,
+        Code_postale        Int NOT NULL ,
+        Pays                Varchar (50) NOT NULL ,
+        Id_acheteur         Int NOT NULL
+	,CONSTRAINT Livraison_PK PRIMARY KEY (Numero_de_telephone)
+
+	,CONSTRAINT Livraison_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
+	,CONSTRAINT Livraison_Acheteur_AK UNIQUE (Id_acheteur)
 )ENGINE=InnoDB;
 
 
