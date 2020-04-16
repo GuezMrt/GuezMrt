@@ -32,15 +32,17 @@
     
     <body>
     <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm">
+        <nav class="navbar navbar-expand-sm fixed-top">
      
             <div class="searchbar fixed-top">
             <input class="search_input" type="text" name="" placeholder="Rechercher...">
                 <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
             </div>
+            
             <button style = "border: none; color: white; padding: 12px 1300px;font-size: 30px" class="btn fixed-top">
                 <i class="fa fa-bars"></i>
             </button>
+            
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
                     <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
@@ -61,22 +63,28 @@
 
         </nav>
         
-        <header class="page-header header container-fluid">
+        <header class="page-header header container-fluid" style="margin-top : 90px">
             <div class="overlay"></div>
             <div class="description">
                 <h1>Bienvenue acheteur !</h1>
             </div>
         </header> 
-       
-        <div class="row">
-        <div class="col-sm">
-            <form action="ajouter acheteur.php" method="post">   
+        
+    <form  action="ajouter acheteur.php" method="post"> 
+ <div class="container-fluid">
+  <div class="container-fluid">
+        <div class="row" style="height : 350px; ">
+        <div class="col-sm" >
+        
 		<table>    
 			<tr>
 				<td>Nom :</td>     
-				<td><input type="text" name="Nom"></td>    
-			</tr>    
+				<td><input type="text" name="Nom"></td>
             
+			</tr> 
+            <tr> </tr>
+            <tr> </tr>
+             
 			<tr>     
 				<td>Prenom:</td>     
 				<td><input type="text" name="Prenom"></td>    
@@ -89,96 +97,111 @@
 				<td>Email:</td>     
 				<td><input type="text" name="Adresse"></td>    
 			</tr>    
-			<tr>     
 	
+	       
 			</table>  
-		</form> 
-        </div>
+		
+       
             
-        <div class="col-sm" >
-            	<form action="ajouter acheteur.php" method="post">   
+    </div> <div class="col-sm">
+            	  
 		<table>    
 			<tr>
 				<td>Adresse ligne 1 :</td>     
-				<td><input type="text" name="ad1"></td>    
+				<td><input type="text" name="Adresse1"></td>    
 			</tr>    
 			<tr>     
-				<td>Adresse ligne 1 </td>     
-				<td><input type="text" name="ad2"></td>    
+				<td>Adresse ligne 2 :</td>     
+				<td><input type="text" name="Adresse2"></td>    
 			</tr>    
 			<tr>     
-				<td>Ville</td>     
-				<td><input type="text" name="ville"></td>    
+				<td>Ville : </td>     
+				<td><input type="text" name="Ville"></td>    
 			</tr>    
 			<tr>     
-				<td>Code Postale</td>     
-				<td><input type="text" name="codepost"></td>    
+				<td>Code Postale : </td>     
+				<td><input type="text" name="Code_postale"></td>    
 			</tr> 
             <tr>     
-				<td>Pays</td>     
-				<td><input type="text" name="pays"></td>    
+				<td>Pays : </td>     
+				<td><input type="text" name="Pays"></td>    
 			</tr> 
             <tr>     
-				<td>Numero de telephone</td>     
-				<td><input type="text" name="numéro de tel"></td>    
+				<td>Numero de telephone : </td>     
+				<td><input type="text" name="Numero_de_telephone"></td>    
 			</tr> 
+           
+           
+            
+		   
+		
+			</table>  
+		 
+        </div>
+            
+    <div class="col-sm" >
+            	  
+		<table>    
+		 
+			<tr>     
+				<td>Numero de carte : </td>     
+				<td><input type="text" name="Numero_carte"></td>    
+			</tr>  
+            <tr>     
+				<td>Code de securite : </td>     
+				<td><input type="text" name="Code_securite"></td>    
+			</tr> 
+			<tr>     
+				<td>Nom  : </td>     
+				<td><input type="text" name="Nom_proprietaire"></td>    
+			</tr> 
+            <tr>     
+				<td>Prenom : </td>     
+				<td><input type="text" name="Prenom_proprietaire"></td>    
+			</tr> 
+			<tr>     
+				<td>Date d'expiration : </td>     
+				<td><input type="text" name="Date_expiration"></td>    
+			</tr> 
+            
+            	<tr>
+                
+                    <td>Type de paiement : </td>     
+				    <td><input type="text" name="Type"></td> 
+			</tr> 
+             <tr>     
+				<td>Sold : </td>     
+				<td><input type="text" name="Sold"></td>    
+			</tr> 
+            <tr>     
+				<td>Seuil : </td>     
+				<td><input type="text" name="Seuil"></td>    
+			</tr> 
+            
             
             
 		   
 		
 			</table>  
-		</form> 
+		
         </div>
             
-        <div class="col-sm" >
-        <form action="ajouter acheteur.php" method="post">   
-		<table>    
-			<tr>
-				<td>    <p><input type="checkbox" name="domaine" value="Pedagogie">Pedagogie
-                        <input type="checkbox" name="domaine" value="Psychologie">Psychologie
-                        <input type="checkbox" name="domaine" value="Informatique">Informatique
-                        <input  type="checkbox" name="domaine" value="Autre">Autre</p>
-                </td>     
-			 
-			</tr>    
-			<tr>     
-				<td>Adresse ligne 1 </td>     
-				<td><input type="text" name="ad2"></td>    
-			</tr>    
-			<tr>     
-				<td>Ville</td>     
-				<td><input type="text" name="ville"></td>    
-			</tr>    
-			<tr>     
-				<td>Code Postale</td>     
-				<td><input type="text" name="codepost"></td>    
-			</tr> 
-            <tr>     
-				<td>Pays</td>     
-				<td><input type="text" name="pays"></td>    
-			</tr> 
-            <tr>     
-				<td>Numero de telephone</td>     
-				<td><input type="text" name="numéro de tel"></td>    
-			</tr> 
-
-			</table>  
-		</form> 
-        </div>
-
-    </div>
-  
-	   <div class="row">
-        <div class="col-lg" style="background-color:red">
-       
-        </div>
-        <div class="col-sm" style="background-color:red">
-         <input type = "button" name = "Creer" value = "Creer"  onClick = ""> &nbsp;
-        </div>
-              
-    </div>
     
-     
+        </div>
+       <div class="row" style="height:100px;">
+                   
+
+                    <div class="col-lg" style = "padding-left : 1140px">
+                        <input type = "submit" name = "button" value = "Creer"  style="background-color:#3EE5CA; padding : 20px 50px;">
+                    </div>
+
+
+           
+        </div>
+            </div>
+        </div>
+     </form>
+      
 
         
 
@@ -217,3 +240,4 @@
        
     </body>
 </html>
+
