@@ -8,12 +8,7 @@ session_start();
 <title>Connexion</title>
 </head>
 <body>
-   <p>
-        <a href="Ajouter Item.php">Lien vers mapage.php</a><br />
-    </p>
-    	<div class="header">
-	    </div>
-	</body>
+</body>
 </html>
 <?php
 // récupère les données du formulaire
@@ -45,7 +40,7 @@ $sql = "SELECT * FROM vendeur";
   $_SESSION['Pseudo']=$Pseudo;
   $_SESSION['Id_vendeur']=$data['Id_vendeur'];
   $_SESSION['Email']=$Email;
-  echo "ID: " . $_SESSION['Id_vendeur'] . "<br>";
+header('Location: Ajouter item.php');
 }
         }    
         else
