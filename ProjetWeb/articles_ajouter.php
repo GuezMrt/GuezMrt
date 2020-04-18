@@ -33,15 +33,21 @@ session_start();
 				<td>Video:</td>     
 				<td><input type="text" name="Video"></td>    
 			</tr>
-      <tr>     
-        <td>Type de vente 1:</td>     
-        <td><input type="text" name="Typedevente1"></td>    
+       <td>Type de vente 1:</td>     
+        <td><select name="Typedevente1">
+    <option value="Achat immédiat">Achat immédiat</option>
+    <option value="Enchere">Enchère</option>
+    <option value="Negociation">Negociation</option>
+  </select></td>    
       </tr>    
       <tr>     
         <td>Type de vente 2:</td>     
-        <td><input type="text" name="Typedevente2"></td>    
-      </tr>    
-    <tr>     
+        <td><select name="Typedevente2">
+          <option value="Rien">Rien</option>
+    <option value="Achat immédiat">Achat immédiat</option>
+    <option value="Negociation">Negociation</option>
+  </select></td>    
+      </tr>         
         <td>Nom catégorie:</td>  
         <td>    
     <select name="nom_cat">
@@ -69,7 +75,11 @@ $Prix = isset($_POST["Prix"])? $_POST["Prix"] : "";
 $Description = isset($_POST["Description"])? $_POST["Description"] : "";
 $Video = isset($_POST["Video"])? $_POST["Video"] : ""; 
 $Typedevente1 = isset($_POST["Typedevente1"])? $_POST["Typedevente1"] : ""; 
-$Typedevente2 = isset($_POST["Typedevente2"])? $_POST["Typedevente2"] : ""; 
+$Typedevente2 = isset($_POST["Typedevente2"])? $_POST["Typedevente2"] : "";
+if(($Typedevente1=="Enchere")||($Typedevente2==$Typedevente1))
+{
+  $Typedevente2="Rien";
+}
 $nom_cat = isset($_POST["nom_cat"])? $_POST["nom_cat"] : ""; 
 $photo = isset($_POST["photo"])? $_POST["photo"] : ""; 
 $Id_vendeur = $_SESSION['Id_vendeur'];
