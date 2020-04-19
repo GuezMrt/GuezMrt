@@ -47,7 +47,7 @@
                         <a class="nav-link" href="creer_vendeur.php">Vendeur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
+                        <a class="nav-link" href="connexion_admin.php">Admin</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Creer_acheteur.php">Acheteur</a>
