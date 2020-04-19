@@ -33,7 +33,8 @@ session_start();
 				<td>Video:</td>     
 				<td><input type="text" name="Video"></td>    
 			</tr>
-       <td>Type de vente 1:</td>     
+      <tr>     
+        <td>Type de vente 1:</td>     
         <td><select name="Typedevente1">
     <option value="Achat immédiat">Achat immédiat</option>
     <option value="Enchere">Enchère</option>
@@ -47,7 +48,9 @@ session_start();
     <option value="Achat immédiat">Achat immédiat</option>
     <option value="Negociation">Negociation</option>
   </select></td>    
-      </tr>         
+      </tr>    
+      <tr>     
+    <tr>     
         <td>Nom catégorie:</td>  
         <td>    
     <select name="nom_cat">
@@ -58,9 +61,10 @@ session_start();
 </td>  
       </tr>     
            <tr>  
-              <td> <label for="myfile">Select a file:</label>
+            <td>Nom catégorie:</td>
+              <td>  
                 <input type="file" id="myfile" name="photo"><br><br>
-               
+               </td>
             </tr>
 			<tr>     
 				<td colspan="2" align="center">                                
@@ -80,6 +84,7 @@ if(($Typedevente1=="Enchere")||($Typedevente2==$Typedevente1))
 {
   $Typedevente2="Rien";
 }
+$nom_cat = isset($_POST["nom_cat"])? $_POST["nom_cat"] : ""; 
 $nom_cat = isset($_POST["nom_cat"])? $_POST["nom_cat"] : ""; 
 $photo = isset($_POST["photo"])? $_POST["photo"] : ""; 
 $Id_vendeur = $_SESSION['Id_vendeur'];
@@ -151,82 +156,5 @@ $Id_vendeur = $_SESSION['Id_vendeur'];
 mysqli_close($db_handle);
   ?> 
 		</form>
- 
-
-  <script>
-      //script bootstrap
-var x, i, j, selElmnt, a, b, c;
-/*look for any elements with the class "custom-select":*/
-x = document.getElementsByClassName("custom-select");
-for (i = 0; i < x.length; i++) {
-  selElmnt = x[i].getElementsByTagName("select")[0];
-  /*for each element, create a new DIV that will act as the selected item:*/
-  a = document.createElement("DIV");
-  a.setAttribute("class", "select-selected");
-  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-  x[i].appendChild(a);
-  /*for each element, create a new DIV that will contain the option list:*/
-  b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
-  for (j = 1; j < selElmnt.length; j++) {
-    /*for each option in the original select element,
-    create a new DIV that will act as an option item:*/
-    c = document.createElement("DIV");
-    c.innerHTML = selElmnt.options[j].innerHTML;
-    c.addEventListener("click", function(e) {
-        /*when an item is clicked, update the original select box,
-        and the selected item:*/
-        var y, i, k, s, h;
-        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-        h = this.parentNode.previousSibling;
-        for (i = 0; i < s.length; i++) {
-          if (s.options[i].innerHTML == this.innerHTML) {
-            s.selectedIndex = i;
-            h.innerHTML = this.innerHTML;
-            y = this.parentNode.getElementsByClassName("same-as-selected");
-            for (k = 0; k < y.length; k++) {
-              y[k].removeAttribute("class");
-            }
-            this.setAttribute("class", "same-as-selected");
-            break;
-          }
-        }
-        h.click();
-    });
-    b.appendChild(c);
-  }
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
-      /*when the select box is clicked, close any other select boxes,
-      and open/close the current select box:*/
-      e.stopPropagation();
-      closeAllSelect(this);
-      this.nextSibling.classList.toggle("select-hide");
-      this.classList.toggle("select-arrow-active");
-    });
-}
-function closeAllSelect(elmnt) {
-  /*a function that will close all select boxes in the document,
-  except the current select box:*/
-  var x, y, i, arrNo = [];
-  x = document.getElementsByClassName("select-items");
-  y = document.getElementsByClassName("select-selected");
-  for (i = 0; i < y.length; i++) {
-    if (elmnt == y[i]) {
-      arrNo.push(i)
-    } else {
-      y[i].classList.remove("select-arrow-active");
-    }
-  }
-  for (i = 0; i < x.length; i++) {
-    if (arrNo.indexOf(i)) {
-      x[i].classList.add("select-hide");
-    }
-  }
-}
-/*if the user clicks anywhere outside the select box,
-then close all select boxes:*/
-document.addEventListener("click", closeAllSelect);
-</script>
 	</body> 
 </html>
