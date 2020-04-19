@@ -210,7 +210,7 @@ $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
  
 
         //header
-            echo'<a href = "connexion_acheteur.php">connexion</a>';
+            echo '<a href = "connexion_acheteur.php">connexion</a>';
         } 
 
       
