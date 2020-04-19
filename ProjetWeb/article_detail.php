@@ -29,7 +29,50 @@ session_start();
         </style>
         
     
-    </head>
+        </head>
+    
+    <body>
+    <!-- Navbar -->
+       <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm fixed-top">
+     
+            <div class="searchbar fixed-top">
+            <input class="search_input" type="text" name="" placeholder="Rechercher...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+            </div>
+            <button style = "border: none; color: white; padding: 12px 1300px;font-size: 30px" class="btn fixed-top">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="container justify-content-center">
+                <ul class="navbar-nav fixed-top justify-content-center">
+                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+         
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="creer_vendeur.php">Catégorie</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="Panier.php"><img src="Panier.png" style = "height:45px; width : 45px;"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Message</a>
+                    </li>
+                   
+                </ul>
+            </div>
+
+        </nav>
+        
+ <header class="page-header header container-fluid" style = "padding-top: 90px; background-color :#B1B1B1 ">
+            
+            <div class="description">
+                <a href ="Ferraille_tresor.php" style="font-size: 2em; color : #000">Ferraille ou Tresor</a>
+                <a href ="Bon_musee.php" style="font-size: 2em; color : #000 ; padding: 30px 30px">Bon pour le musee</a>
+                <a href ="Accessoires_VIP.php" style="font-size: 2em; color : #000">Accessoires VIP</a>
+    
+            </div>
+        </header>
     
     <body>
         

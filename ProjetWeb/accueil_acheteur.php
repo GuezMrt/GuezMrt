@@ -51,7 +51,7 @@ session_start();
                         <a class="nav-link" href="creer_vendeur.php">Catégorie</a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link" href="Creer_acheteur.php"><img src="Panier.png" style = "height:45px; width : 45px;"></a>
+                        <a class="nav-link" href="Panier.php"><img src="Panier.png" style = "height:45px; width : 45px;"></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Message</a>

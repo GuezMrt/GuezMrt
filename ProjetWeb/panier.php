@@ -56,7 +56,7 @@ session_start();
   	{    
   		echo "Database not found";   
   	}  
-}    
+    
 //fermer la connexion  
 mysqli_close($db_handle);
   ?>
