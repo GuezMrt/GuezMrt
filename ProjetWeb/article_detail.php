@@ -29,11 +29,10 @@ session_start();
         </style>
         
     
-        </head>
+    </head>
     
     <body>
-    <!-- Navbar -->
-       <!-- Navbar -->
+                <!-- Navbar -->
         <nav class="navbar navbar-expand-sm fixed-top">
      
             <div class="searchbar fixed-top">
@@ -45,38 +44,36 @@ session_start();
             </button>
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+                    <li class="navbar-brand" style = "font-size: 40px"  href="accueil.php">ECE Ebay</li>
          
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="creer_vendeur.php">Catégorie</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="Panier.php"><img src="Panier.png" style = "height:45px; width : 45px;"></a>
+                        <a class="nav-link" href="articles_vendeur.php">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Message</a>
+                        <a class="nav-link" href="articles_ajouter.php">Ajouter</a>
                     </li>
-                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.php">Messages</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="Compte.php">Compte</a>
+                    </li>
                 </ul>
             </div>
 
         </nav>
-        
- <header class="page-header header container-fluid" style = "padding-top: 90px; background-color :#B1B1B1 ">
-            
+            <header class="page-header header container-fluid" style = "padding-top : 90px; background-color :#B1B1B1 ">
+            <div class="overlay" style = "padding-top: 90px"></div>
             <div class="description">
-                <a href ="Ferraille_tresor.php" style="font-size: 2em; color : #000">Ferraille ou Tresor</a>
-                <a href ="Bon_musee.php" style="font-size: 2em; color : #000 ; padding: 30px 30px">Bon pour le musee</a>
-                <a href ="Accessoires_VIP.php" style="font-size: 2em; color : #000">Accessoires VIP</a>
-    
+                <h1>Detail de l'article</h1>
+   
             </div>
-        </header>
-    
-    <body>
+        </header> 
         
-        <div class="row">
+        <div class = "container" align = "center">
+        <div class="row" style = "padding-top : 20px" >
         <?php 
             $Id_item = $_GET['id'];
             
@@ -95,19 +92,23 @@ session_start();
                 while ($data = mysqli_fetch_assoc($result))
                     
                 {
-                    echo '<div class="col-lg-4 col-md-6 mb-4" >'; 
-                    echo '<div class="card h-80">';
-                    echo '<a href="#"><img class="card-img-top" src="img/'. $data['photo'] .' " alt=""></a>';
-                    echo '<div class="card-body"> <h4 class="card-title"><a href="#">'. $data['Nom'] .'</a></h4>';
-                   
-                    // pour recuperer l'id dans articles_detais.php => $IdDelItem = $_GET['id'];
-                    echo '<h5>'. $data['Prix'] .'</h5>';
-                    echo '<p class="card-text"> '. $data['Description'] .'</p></div>';
-                    echo '<div class="card-footer"><small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small></div>';
-                    echo '<a href = "panier.php?id='. $data['Id_item'] .'"><input name="button" value="Panier"></a><br>';
-                 
-                    echo'</div>';
-                    echo'</div>';
+ 
+                    echo '    <div class="card mb-2">
+                              <div class="row no-gutters" style = " height : 300px; width : 600px">
+                                <div class="col-md-4" style = "height : 300px; width : 600px">
+                                  <img src="img/'. $data['photo'] .' " height = "300px"  class="card-img" alt="...">
+                                </div>
+                                <div class="col-md-8" style = "height : 300px; width : 600px">
+                                  <div class="card-body" >
+                                    <h5 class="card-title">'. $data['Nom'] .'</h5>
+                                    <h5>'. $data['Prix'] .'</h5>
+                                    <h5>'. $data['nom_cat'] .'</h5>
+                                    <p class="card-text">'. $data['Description'] .'</p>
+                                    <p class="card-text"> <a href = "panier.php"><input type ="submit" name="button" value="Ajouter Panier"></a><br></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>'; 
                 }
               
                  
@@ -126,7 +127,34 @@ session_start();
         ?>
         
         </div>
+            </div>
         
+           <footer class="page-footer fixed-bottom" >
+         <div class="container">
+         <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-12">
+         <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
+         <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+         Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+             </p>
+         <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+         Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+         </p>
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-12">
+         <h6 class="text-uppercase font-weight-bold">Contact</h6>
+         <p>
+         37, quai de Grenelle, 75015 Paris, France <br>
+         info@webDynamique.ece.fr <br>
+         +33 01 02 03 04 05 <br>
+         +33 01 03 02 05 04
+         </p>
+         </div>
+         </div>
+         <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div></div>
+        </footer>
         
        
  
@@ -136,5 +164,4 @@ session_start();
     </body>
 
 </html>
-
 
