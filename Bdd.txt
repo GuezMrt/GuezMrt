@@ -97,7 +97,7 @@ CREATE TABLE Item(
 	,CONSTRAINT Item_PK PRIMARY KEY (Id_item)
 
 	,CONSTRAINT Item_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
-	,CONSTRAINT Item_Vendeur0_FK FOREIGN KEY (Id_vendeur) REFERENCES Vendeur(Id_vendeur)
+	,CONSTRAINT Item_Vendeur0_FK FOREIGN KEY (Id_vendeur) REFERENCES Vendeur(Id_vendeur) ON DELETE CASCADE
 	,CONSTRAINT Item_Categorie1_FK FOREIGN KEY (nom_cat) REFERENCES Categorie(nom_cat)
 )ENGINE=InnoDB;
 
@@ -111,7 +111,7 @@ CREATE TABLE Photo(
         Id_item Int NOT NULL
 	,CONSTRAINT Photo_PK PRIMARY KEY (photo)
 
-	,CONSTRAINT Photo_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+	,CONSTRAINT Photo_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
 
@@ -146,7 +146,7 @@ CREATE TABLE negocie(
 	,CONSTRAINT negocie_PK PRIMARY KEY (Id_acheteur,Id_item,Id_vendeur)
 
 	,CONSTRAINT negocie_Acheteur_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
-	,CONSTRAINT negocie_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+	,CONSTRAINT negocie_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item) ON DELETE CASCADE
 	,CONSTRAINT negocie_Vendeur1_FK FOREIGN KEY (Id_vendeur) REFERENCES Vendeur(Id_vendeur)
 )ENGINE=InnoDB;
 
@@ -163,7 +163,7 @@ CREATE TABLE Enchere(
         date_fin    Datetime NOT NULL
 	,CONSTRAINT Enchere_PK PRIMARY KEY (Id_item,Id_acheteur)
 
-	,CONSTRAINT Enchere_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+	,CONSTRAINT Enchere_Item_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item) ON DELETE CASCADE
 	,CONSTRAINT Enchere_Acheteur0_FK FOREIGN KEY (Id_acheteur) REFERENCES Acheteur(Id_acheteur)
 )ENGINE=InnoDB;
 
@@ -178,6 +178,6 @@ CREATE TABLE Contient(
 	,CONSTRAINT Contient_PK PRIMARY KEY (Id_panier,Id_item)
 
 	,CONSTRAINT Contient_Panier_FK FOREIGN KEY (Id_panier) REFERENCES Panier(Id_panier)
-	,CONSTRAINT Contient_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item)
+	,CONSTRAINT Contient_Item0_FK FOREIGN KEY (Id_item) REFERENCES Item(Id_item) ON DELETE CASCADE
 )ENGINE=InnoDB;
 
