@@ -47,8 +47,7 @@ session_start();
     </head>
     
     <body>
-       <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm fixed-top">
+   <nav class="navbar navbar-expand-sm fixed-top">
      
             <div class="searchbar fixed-top">
             <input class="search_input" type="text" name="" placeholder="Rechercher...">
@@ -59,10 +58,10 @@ session_start();
             </button>
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil_vendeur.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
          
                 </ul>
-                <ul class="nav navbar-nav">
+           <ul class="nav navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="articles_vendeur.php">Articles</a>
                     </li>
@@ -79,7 +78,13 @@ session_start();
             </div>
 
         </nav>
-             
+        
+ <header class="page-header header container-fluid" style = "padding-top: 90px; background-color :#B1B1B1 ">
+            
+            <div class="description">
+    <h1>Mon compte</h1>
+            </div>
+        </header>
         
             
         <?php 

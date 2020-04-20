@@ -43,18 +43,18 @@ session_start();
             </button>
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil_admin.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
          
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="articles_ajouter.php">Ajouter un Item</a>
+                        <a class="nav-link" href="articles_ajouter_ad.php">Ajouter un Item</a>
                     </li> 
                     <li class="nav-item">
                         <a class="nav-link" href="creer_vendeur_ad.php">Ajouter un vendeur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="supprimmer_vendeur.php">Supprimmer un vendeur</a>
+                        <a class="nav-link" href="supprimer_vendeur.php">Supprimmer un vendeur</a>
                     </li>
                    
                 </ul>
@@ -94,7 +94,7 @@ session_start();
         <div class="col-sm"style="left : 2em">
             <img src="img/vip.jpg" width="420px" height="320" class="rounded" alt="Torque">
             <div class="caption">
-              <p style="text-align: center; color: #07D1B1; padding-top: 40px;width:420px; height:100px; background-color : #353b48"><a href="suppimmer_vendeur.php">Supprimmer un vendeur</a></p> 
+              <p style="text-align: center; color: #07D1B1; padding-top: 40px;width:420px; height:100px; background-color : #353b48"><a href="supprimer_vendeur.php">Supprimmer un vendeur</a></p> 
             </div>
         </div>
     </div>

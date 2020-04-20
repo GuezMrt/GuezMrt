@@ -39,18 +39,18 @@
             </button>
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+                   <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
          
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="creer_vendeur.php">Vendeur</a>
+                        <a class="nav-link" href="connexion_vendeur.php">Vendeur</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="connexion_admin.php">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Creer_acheteur.php">Acheteur</a>
+                        <a class="nav-link" href="connexion_acheteur.php">Acheteur</a>
                     </li>
                 </ul>
             </div>

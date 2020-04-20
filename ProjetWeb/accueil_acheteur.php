@@ -43,7 +43,7 @@ session_start();
             </button>
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil_acheteur.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
          
                 </ul>
                 <ul class="nav navbar-nav">
@@ -88,7 +88,7 @@ session_start();
             <img src="img/musee.jpg" width="420px" height="320" class="rounded" alt="Torque">
             <div class="caption">
                    
-                   <p style="text-align: center; color: #07D1B1; padding-top: 40px;width:420px; height:100px; background-color : #353b48"><a href="Bon_musée.php">Bon pour le musée</a></p>
+                   <p style="text-align: center; color: #07D1B1; padding-top: 40px;width:420px; height:100px; background-color : #353b48"><a href="Bon_musee.php">Bon pour le musée</a></p>
                 
             </div>
         </div>
