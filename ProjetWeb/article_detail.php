@@ -76,7 +76,7 @@ session_start();
         <div class="row" style = "padding-top : 20px" >
         <?php 
             $Id_item = $_GET['id'];
-            $Id_acheteur = $_SESSION['Id_acheteur'];
+            
             $database = "piscine";
             //connectez-vous dans votre BDD
             //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
@@ -104,7 +104,7 @@ session_start();
                                     <h5>'. $data['Prix'] .'</h5>
                                     <h5>'. $data['nom_cat'] .'</h5>
                                     <p class="card-text">'. $data['Description'] .'</p>
-                                    <p class="card-text"> <a href = "panier.php?id='. $data['Id_item'] .'"><input type ="submit" name="button" value="Ajouter Panier"></a><br></p>
+                                    <p class="card-text"> <a href = "panier.php"><input type ="submit" name="button" value="Ajouter Panier"></a><br></p>
                                   </div>
                                 </div>
                               </div>
@@ -164,3 +164,4 @@ session_start();
     </body>
 
 </html>
+

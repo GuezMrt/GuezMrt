@@ -1,16 +1,94 @@
 <?php 
 session_start();
  ?>
-<!DOCTYPE html> 
-<html> 
-<head>  
-	<title>Ajout item</title>  
-	<meta charset="utf-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head> 
-<body> 
+<html>
+    <head>
+                <title>EbayECE</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <meta charset="utf-8">
+        
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script type="text/javascript"></script>
+        <link href="http://fr.allfont.net/allfont.css?fonts=futura-normal" rel="stylesheet" type="text/css"/>
+      
+        <style>
+            
+        body 
+        {
+          
+            font-family: 'Futura-Normal', arial;
+           
+        
+        }
+        </style>
+               <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        
     
-	<h2>Ajout d'un Item</h2>  
+    </head>
+    
+    <body>
+     <nav class="navbar navbar-expand-sm fixed-top">
+     
+            <div class="searchbar fixed-top">
+            <input class="search_input" type="text" name="" placeholder="Rechercher...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+            </div>
+            <button style = "border: none; color: white; padding: 12px 1300px;font-size: 30px" class="btn fixed-top">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="container justify-content-center">
+                <ul class="navbar-nav fixed-top justify-content-center">
+                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil_vendeur.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
+         
+                </ul>
+           <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="articles_vendeur.php">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articles_ajouter.php">Ajouter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="messages.php">Messages</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="accueil_vendeur.php">Compte</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        
+ <header class="page-header header container-fluid" style = "padding-top: 90px; background-color :#B1B1B1 ">
+            
+            <div class="description">
+    <h1>Ajouter un articles</h1>
+            </div>
+        </header>
+
+ 
+    
+<div class="content" align="center">
 	<form action="articles_ajouter.php" method="post">   
 		<table>    
 			<tr>
@@ -61,7 +139,7 @@ session_start();
 </td>  
       </tr>     
            <tr>  
-            <td>Nom catégorie:</td>
+            <td>Photo:</td>
               <td>  
                 <input type="file" id="myfile" name="photo"><br><br>
                </td>
@@ -71,6 +149,7 @@ session_start();
 					<input type="submit" name="button2" value="Ajouter"></td>    
 				</tr>   
 			</table> 
+
         		<?php  
 //recupération des info de pages php
 $Id_item = isset($_POST["Id_item"])? $_POST["Id_item"] : "";  
@@ -155,6 +234,35 @@ $Id_vendeur = $_SESSION['Id_vendeur'];
 //fermer la connexion  
 mysqli_close($db_handle);
   ?> 
+
 		</form>
+  </div>
+
+             <footer class="page-footer">
+         <div class="container">
+         <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-12">
+         <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
+         <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+         Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+             </p>
+         <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+         Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+         </p>
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-12">
+         <h6 class="text-uppercase font-weight-bold">Contact</h6>
+         <p>
+         37, quai de Grenelle, 75015 Paris, France <br>
+         info@webDynamique.ece.fr <br>
+         +33 01 02 03 04 05 <br>
+         +33 01 03 02 05 04
+         </p>
+         </div>
+         </div>
+         <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div></div>
+        </footer>
 	</body> 
 </html>

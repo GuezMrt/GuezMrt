@@ -30,7 +30,49 @@ session_start();
         
     
     </head>
+    <body>
+    <!-- Navbar -->
+       <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm fixed-top">
+     
+            <div class="searchbar fixed-top">
+            <input class="search_input" type="text" name="" placeholder="Rechercher...">
+                <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+            </div>
+            <button style = "border: none; color: white; padding: 12px 1300px;font-size: 30px" class="btn fixed-top">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="container justify-content-center">
+                <ul class="navbar-nav fixed-top justify-content-center">
+                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil_acheteur.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
+         
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="creer_vendeur.php">Catégorie</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="Panier.php"><img src="Panier.png" style = "height:45px; width : 45px;"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Message</a>
+                    </li>
+                   
+                </ul>
+            </div>
+
+        </nav>
+        
+ <header class="page-header header container-fluid" style = "padding-top: 90px; background-color :#B1B1B1 ">
+            
+            <div class="description">
+                <a href ="Ferraille_tresor.php" style="font-size: 2em; color : #000">Ferraille ou Tresor</a>
+                <a href ="Bon_musée.php" style="font-size: 2em; color : #000 ; padding: 30px 30px">Bon pour le musee</a>
+                <a href ="Accessoires_VIP.php" style="font-size: 2em; color : #000">Accessoires VIP</a>
     
+            </div>
+        </header>
+        </div>
     <body>
         <form action = "articles_affichage.php" method = "post">
         <div class="row">
@@ -87,7 +129,32 @@ session_start();
         </div>
      
         </form>
-        
+                 <footer class="page-footer">
+         <div class="container">
+         <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-12">
+         <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
+         <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+         Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+             </p>
+         <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu.
+         Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.
+         </p>
+         </div>
+         <div class="col-lg-4 col-md-4 col-sm-12">
+         <h6 class="text-uppercase font-weight-bold">Contact</h6>
+         <p>
+         37, quai de Grenelle, 75015 Paris, France <br>
+         info@webDynamique.ece.fr <br>
+         +33 01 02 03 04 05 <br>
+         +33 01 03 02 05 04
+         </p>
+         </div>
+         </div>
+         <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div></div>
+        </footer>
        
  
         

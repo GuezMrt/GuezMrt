@@ -1,4 +1,3 @@
-    	
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,7 +45,7 @@
             
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  href="#">ECE Ebay</li>
+                   <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
          
                 </ul>
                 <ul class="nav navbar-nav">
@@ -72,7 +71,141 @@
         </header> 
         
 <form action="Creer_acheteur.php" method="post"> 
-            <?php  
+  
+ <div class="container-fluid">
+  <div class="container-fluid">
+        <div class="row" style="height : 350px; ">
+        <div class="col-sm" >
+        
+    <table>    
+      <tr>
+        <td>Nom :</td>     
+        <td><input type="text" name="Nom"></td>
+            
+      </tr> 
+            <tr> </tr>
+            <tr> </tr>
+             
+      <tr>     
+        <td>Prenom:</td>     
+        <td><input type="text" name="Prenom"></td>    
+      </tr>    
+      <tr>     
+        <td>Adresse:</td>     
+        <td><input type="text" name="Email"></td>    
+      </tr>    
+      <tr>     
+        <td>Email:</td>     
+        <td><input type="text" name="Adresse"></td>    
+      </tr>    
+  
+         
+      </table>  
+    
+       
+            
+    </div> <div class="col-sm">
+                
+    <table>    
+      <tr>
+        <td>Adresse ligne 1 :</td>     
+        <td><input type="text" name="Adresse1"></td>    
+      </tr>    
+      <tr>     
+        <td>Adresse ligne 2 :</td>     
+        <td><input type="text" name="Adresse2"></td>    
+      </tr>    
+      <tr>     
+        <td>Ville : </td>     
+        <td><input type="text" name="Ville"></td>    
+      </tr>    
+      <tr>     
+        <td>Code Postale : </td>     
+        <td><input type="text" name="Code_postale"></td>    
+      </tr> 
+            <tr>     
+        <td>Pays : </td>     
+        <td><input type="text" name="Pays"></td>    
+      </tr> 
+            <tr>     
+        <td>Numero de telephone : </td>     
+        <td><input type="text" name="Numero_de_telephone"></td>    
+      </tr> 
+           
+           
+            
+       
+    
+      </table>  
+     
+        </div>
+            
+    <div class="col-sm" >
+        
+                
+    <table>    
+     
+      <tr>     
+        <td>Numero de carte : </td>     
+        <td><input type="text" name="Numero_carte"></td>    
+      </tr>  
+            <tr>     
+        <td>Code de securite : </td>     
+        <td><input type="text" name="Code_securite"></td>    
+      </tr> 
+      <tr>     
+        <td>Nom  : </td>     
+        <td><input type="text" name="Nom_proprietaire"></td>    
+      </tr> 
+            <tr>     
+        <td>Prenom : </td>     
+        <td><input type="text" name="Prenom_proprietaire"></td>    
+      </tr> 
+      <tr>     
+        <td>Date d'expiration : </td>     
+        <td><input type="text" name="Date_expiration"></td>    
+      </tr> 
+            
+              <tr>
+                
+                    <td>Type de paiement : </td>     
+            <td><input type="text" name="Type"></td> 
+      </tr> 
+             <tr>     
+        <td>Sold : </td>     
+        <td><input type="text" name="Sold"></td>    
+      </tr> 
+            <tr>     
+        <td>Seuil : </td>     
+        <td><input type="text" name="Seuil"></td>    
+      </tr> 
+            
+            
+            
+       
+    
+      </table>  
+    
+        </div>
+            
+    
+        </div>
+       <div class="row" style="height:100px;">
+                   
+
+                    <div class="col-lg" style = "padding-left : 1140px">
+                        
+                        <input type = "submit" name = "button" value = "Creer"  style="background-color:#3EE5CA; padding : 20px 50px;">
+                    </div>
+
+
+           
+        </div>
+            </div>
+        </div>
+
+     </form>
+<?php  
 //recupération des info de pages php
 $Nom = isset($_POST["Nom"])? $_POST["Nom"] : "";  
 $Prenom = isset($_POST["Prenom"])? $_POST["Prenom"] : "";  
@@ -97,6 +230,7 @@ $Sold = isset($_POST["Sold"])? $_POST["Sold"] : "";
 $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
 
  
+ 
 
  
   //selection bdd
@@ -105,7 +239,7 @@ $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
  $db_handle = mysqli_connect('localhost', 'root', 'root');  
  $db_found = mysqli_select_db($db_handle, $database); 
  
- if ($_POST["button"]) 
+  if ($_POST["button"]) 
  {   
   if ($db_found) 
     {    
@@ -138,12 +272,12 @@ $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
           if ($Nom != "") 
           {     
           //on cherche l'achteur ajouté    
- 	          $sql .= " WHERE Nom LIKE '%$Nom%'";      
- 	          if ($Prenom != "")
+            $sql .= " WHERE Nom LIKE '%$Nom%'";      
+            if ($Prenom != "")
             {       
- 		         $sql .= " AND Prenom LIKE '%$Prenom%'";
+             $sql .= " AND Prenom LIKE '%$Prenom%'";
                   
- 	          }     
+            }     
         }     
     $result = mysqli_query($db_handle, $sql); 
     while ($data = mysqli_fetch_assoc($result) ) 
@@ -161,12 +295,12 @@ $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
           if ($Nom != "") 
           {     
           //on cherche l'achteur ajouté    
- 	          $sql .= " WHERE Nom LIKE '%$Nom%'";      
- 	          if ($Prenom != "")
+            $sql .= " WHERE Nom LIKE '%$Nom%'";      
+            if ($Prenom != "")
             {       
- 		         $sql .= " AND Prenom LIKE '%$Prenom%'";
+             $sql .= " AND Prenom LIKE '%$Prenom%'";
                   
- 	          }     
+            }     
         }     
     $result = mysqli_query($db_handle, $sql); 
     while ($data = mysqli_fetch_assoc($result) ) 
@@ -187,12 +321,12 @@ $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
           if ($Nom != "") 
           {     
           //on cherche l'achteur ajouté    
- 	          $sql .= " WHERE Nom LIKE '%$Nom%'";      
- 	          if ($Prenom != "")
+            $sql .= " WHERE Nom LIKE '%$Nom%'";      
+            if ($Prenom != "")
             {       
- 		         $sql .= " AND Prenom LIKE '%$Prenom%'";
+             $sql .= " AND Prenom LIKE '%$Prenom%'";
                   
- 	          }     
+            }     
         }     
     $result = mysqli_query($db_handle, $sql); 
     while ($data = mysqli_fetch_assoc($result) ) 
@@ -206,158 +340,19 @@ $Seuil = isset($_POST["Seuil"])? $_POST["Seuil"] : "";
             
         $sql = "INSERT INTO Panier(Id_acheteur)VALUES('$Id_acheteur')";
    $result = mysqli_query($db_handle, $sql); 
-    
- 
-
-        //header
-            echo '<a href = "connexion_acheteur.php">connexion</a>';
+   echo '<a href = "connexion_acheteur.php">connexion</a>';
         } 
-
-      
-} 
+      }
   else 
-  	{    
-  		echo "Database not found";   
-  	}  
+    {    
+      echo "Database not found";   
+    }  
 
 }    
    
 //fermer la connexion  
 mysqli_close($db_handle);
   ?> 
- <div class="container-fluid">
-  <div class="container-fluid">
-        <div class="row" style="height : 350px; ">
-        <div class="col-sm" >
-        
-		<table>    
-			<tr>
-				<td>Nom :</td>     
-				<td><input type="text" name="Nom"></td>
-            
-			</tr> 
-            <tr> </tr>
-            <tr> </tr>
-             
-			<tr>     
-				<td>Prenom:</td>     
-				<td><input type="text" name="Prenom"></td>    
-			</tr>    
-			<tr>     
-				<td>Adresse:</td>     
-				<td><input type="text" name="Email"></td>    
-			</tr>    
-			<tr>     
-				<td>Email:</td>     
-				<td><input type="text" name="Adresse"></td>    
-			</tr>    
-	
-	       
-			</table>  
-		
-       
-            
-    </div> <div class="col-sm">
-            	  
-		<table>    
-			<tr>
-				<td>Adresse ligne 1 :</td>     
-				<td><input type="text" name="Adresse1"></td>    
-			</tr>    
-			<tr>     
-				<td>Adresse ligne 2 :</td>     
-				<td><input type="text" name="Adresse2"></td>    
-			</tr>    
-			<tr>     
-				<td>Ville : </td>     
-				<td><input type="text" name="Ville"></td>    
-			</tr>    
-			<tr>     
-				<td>Code Postale : </td>     
-				<td><input type="text" name="Code_postale"></td>    
-			</tr> 
-            <tr>     
-				<td>Pays : </td>     
-				<td><input type="text" name="Pays"></td>    
-			</tr> 
-            <tr>     
-				<td>Numero de telephone : </td>     
-				<td><input type="text" name="Numero_de_telephone"></td>    
-			</tr> 
-           
-           
-            
-		   
-		
-			</table>  
-		 
-        </div>
-            
-    <div class="col-sm" >
-        
-            	  
-		<table>    
-		 
-			<tr>     
-				<td>Numero de carte : </td>     
-				<td><input type="text" name="Numero_carte"></td>    
-			</tr>  
-            <tr>     
-				<td>Code de securite : </td>     
-				<td><input type="text" name="Code_securite"></td>    
-			</tr> 
-			<tr>     
-				<td>Nom  : </td>     
-				<td><input type="text" name="Nom_proprietaire"></td>    
-			</tr> 
-            <tr>     
-				<td>Prenom : </td>     
-				<td><input type="text" name="Prenom_proprietaire"></td>    
-			</tr> 
-			<tr>     
-				<td>Date d'expiration : </td>     
-				<td><input type="text" name="Date_expiration"></td>    
-			</tr> 
-            
-            	<tr>
-                
-                    <td>Type de paiement : </td>     
-				    <td><input type="text" name="Type"></td> 
-			</tr> 
-             <tr>     
-				<td>Sold : </td>     
-				<td><input type="text" name="Sold"></td>    
-			</tr> 
-            <tr>     
-				<td>Seuil : </td>     
-				<td><input type="text" name="Seuil"></td>    
-			</tr> 
-            
-            
-            
-		   
-		
-			</table>  
-		
-        </div>
-            
-    
-        </div>
-       <div class="row" style="height:100px;">
-                   
-
-                    <div class="col-lg" style = "padding-left : 1140px">
-                        <input type = "submit" name = "button" value = "Creer"  style="background-color:#3EE5CA; padding : 20px 50px;">
-                    </div>
-
-
-           
-        </div>
-            </div>
-        </div>
-
-     </form>
-
       
 
         

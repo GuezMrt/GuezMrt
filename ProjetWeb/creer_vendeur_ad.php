@@ -3,14 +3,11 @@ session_start();
  ?>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<title>Connection d'un vendeur</title>
- 
-            <title>EbayECE</title>
+    <head>
         
+        <title>EbayECE</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
         <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,24 +18,20 @@ session_start();
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <script type="text/javascript"></script>
         <link href="http://fr.allfont.net/allfont.css?fonts=futura-normal" rel="stylesheet" type="text/css"/>
-      
         <style>
-            
         body 
         {
           
             font-family: 'Futura-Normal', arial;
-           
         
         }
         </style>
-        
  
-  
-</head>
-<body>
-<!-- Navbar -->
-    <form action="connexion_vendeur.php" method="post">
+    </head>
+    
+    <body>
+    <!-- Navbar -->
+       <!-- Navbar -->
         <nav class="navbar navbar-expand-sm fixed-top">
      
             <div class="searchbar fixed-top">
@@ -50,18 +43,18 @@ session_start();
             </button>
             <div class="container justify-content-center">
                 <ul class="navbar-nav fixed-top justify-content-center">
-                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
+                    <li class="navbar-brand" style = "font-size: 40px"  ><a href="accueil_admin.php" style = "text-decoration: none; color: white">ECE Ebay</a></li>
          
                 </ul>
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="creer_vendeur.php">Vendeur</a>
+                        <a class="nav-link" href="articles_ajouter_ad.php">Ajouter un Item</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="creer_vendeur_ad.php">Ajouter un vendeur</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Creer_acheteur.php">Acheteur</a>
+                        <a class="nav-link" href="supprimer_vendeur.php">Supprimmer un vendeur</a>
                     </li>
                    
                 </ul>
@@ -70,104 +63,119 @@ session_start();
         </nav>
         
         <header class="page-header header container-fluid" style = "padding-top: 90px; background-color :#B1B1B1 ">
-            <div class="overlay" style = "padding-top: 90px"></div>
+            <div class="overlay"></div>
             <div class="description">
-                <h1>Bienvenue vendeur !</h1>
-   
+                <h1>Ajout d'un vendeur</h1>
             </div>
         </header> 
-<div class="content" align="center">
-    
-        <p>Veuillez entrer vos identifiants pour vous connecter:<p/>
-        <div class="center">
-            <table>    
-      <tr>
-        <td>Pseudo:</td>     
-        <td><input type="text" name="Pseudo"></td>    
-      </tr>    
-      <tr>     
-        <td>Email:</td>     
-        <td><input type="password" name="Email"></td>    
-      </tr>
-      <tr>     
-        <td colspan="2" align="center">                                
-          <input type = "submit" href = "acceuil_vendeur.php" name = "button" value="Connection" style = "background-color:#353b48 ; color: #fff; padding : 5px 30px"></td>    
-        </tr>   
-      </table>
-    </div>
-        
-<?php
-     
-            
-        
-// récupère les données du formulaire
+<body>  
+<div class="container" align="center">  
+	
+	<form action="creer_vendeur_ad.php" method="post">   
+		<table>     
+			<tr>
+				<td>Pseudo:</td>     
+				<td><input type="text" name="Pseudo"></td>    
+			</tr>    
+			<tr>     
+				<td>Email:</td>     
+				<td><input type="text" name="Email"></td>    
+			</tr>
+			<tr>     
+				<td>Nom:</td>     
+				<td><input type="text" name="Nom"></td>    
+			</tr>       
+		<tr>  
+              <td> <label for="myfile">Photo_p:</label>
+                <input type="file" id="myfile" name="Photo_p">
+                </td>
+            </tr>
+  
+            <tr>
+        <td>Image_pref:   
+        <label for="myfile">Photo_p:</label>
+                <input type="file" id="myfile" name="Image_pref"></td>    
+      </tr>>       
+			<tr>     
+				<td colspan="2" align="center">                                
+					<input type="submit" name="button2" value="Ajouter"></td>    
+				</tr>   
+			</table>  
+        <?php  
+//recupération des info de la page
 
-//Connexion à la Base de Données
+$Pseudo = isset($_POST["Pseudo"])? $_POST["Pseudo"] : "";  
+$Email = isset($_POST["Email"])? $_POST["Email"] : "";  
+$Nom = isset($_POST["Nom"])? $_POST["Nom"] : "";  
+$Photo_p = isset($_POST["Photo_p"])? $_POST["Photo_p"] : "";
+$Image_pref = isset($_POST["Image_pref"])? $_POST["Image_pref"] : ""; 
+$Argent=0;
+  //selection bdd
  $database = "piscine";    
 //connection Bdd
  $db_handle = mysqli_connect('localhost', 'root', 'root');  
  $db_found = mysqli_select_db($db_handle, $database); 
-if ($_POST["button"]) 
+ 
+ if ($_POST["button2"]) 
  {   
   if ($db_found) 
     {    
-$Pseudo = isset($_POST["Pseudo"])? $_POST["Pseudo"] : "";  
-$Email = isset($_POST["Email"])? $_POST["Email"] : "";  
-$sql = "SELECT * FROM vendeur";   
+      $sql = "SELECT * FROM vendeur";   
         if ($Pseudo != "") 
         {     
-  //on cherche si le vendeur existe
+  //on cherche si l'acheteur existe deja
           $sql .= " WHERE Pseudo LIKE '%$Pseudo%'";     
           if ($Email != "") 
          {      
-           $sql .= " AND Email LIKE '%$Email%'";   
+           $sql .= " AND Email LIKE '%$Email%'";     
          }    
        }    
-      $result = mysqli_query($db_handle, $sql); 
-      if (mysqli_num_rows($result) != 0) 
+      $result = mysqli_query($db_handle, $sql);    
+       //regarder s'il y a un résultat    
+       if (mysqli_num_rows($result) != 0) 
         {    
-            while ($data = mysqli_fetch_assoc($result)) 
-            {      
-                    //recupération des cariables de session
-                  $_SESSION['Pseudo']=$Pseudo;
-                  $_SESSION['Id_vendeur']=$data['Id_vendeur'];
-                  $_SESSION['Email']=$Email;
-                  echo "ID: " . $_SESSION['Id_vendeur'] . "<br>";
-            }
-          
-     
-          echo'<a href = "accueil_vendeur.php">acceuil</a>';
-        }  
-        }
-        }  
-        else
-        {
-          echo 'Mauvais identifiant   <br>';
-        }
-       
-  
-  
-?>
-    </div>
-    <header class="page-header header container-fluid"  style ="background-color : #B1B1B1 ">
-            
-            <div class="description" >
-                <h1>Je suis nouveau ici</h1>
-   
-            </div>
-        </header> 
-    
-    <div class="content " style ="background-color : #DBFFE2; height: 500px; padding-top : 150px" align="center">
-      <button type="submit" formaction= "http://localhost/ProjetWeb/creer_vendeur.php">S'inscrire</button>
-        
-    </div>
-         </form>
-        
-   
+          echo "Vendeur existe deja";    
+        } 
+        else 
+        { 
+          //ajout a la table
+          $sql = "INSERT INTO vendeur (Pseudo, Email, Nom, Argent, Photo_p, Image_pref)VALUES('$Pseudo', '$Email', '$Nom','$Argent', '$Photo_p','$Image_pref')"; 
+
+          $result = mysqli_query($db_handle, $sql);     
+          echo "ajout réussi." . "<br>";                                   
+          //on affiche l'acheteur ajouté     
+          $sql = "SELECT * FROM vendeur";     
+          if ($Pseudo != "") 
+          {     
+          //on cherche l'achteur ajouté    
+            $sql .= " WHERE Pseudo LIKE '%$Pseudo%'";      
+            if ($Email != "")
+            {       
+             $sql .= " AND Email LIKE '%$Email%'";      
+            }  
+}    
+}     
+ $result = mysqli_query($db_handle, $sql); 
+ 
+ 
+} 
+  else 
+    {    
+      echo "Database not found";   
+    }  
+}    
 
 
-     
-    <footer class="page-footer">
+//fermer la connexion  
+mysqli_close($db_handle);
+
+
+  ?>  
+
+
+		</form>
+  </div>
+         <footer class="page-footer">
          <div class="container">
          <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-12">
@@ -193,5 +201,5 @@ $sql = "SELECT * FROM vendeur";
          </div>
          <div class="footer-copyright text-center">&copy; 2019 Copyright | Droit d'auteur: webDynamique.ece.fr</div></div>
         </footer>
-    </body>
-    </html>
+	</body> 
+</html> 
